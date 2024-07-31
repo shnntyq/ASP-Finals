@@ -7,14 +7,17 @@ import "bootstrap/dist/css/bootstrap.css";
 function AppNavBar() {
   return (
     <Container>
-      <Container>
-        <Navbar.Brand href="#home">NavigateSG</Navbar.Brand>
-      </Container>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar bg="dark" data-bs-theme="dark">
+        <Container className="justify-content-center">
+          <Navbar.Brand href="#home">NavigateSG</Navbar.Brand>
+        </Container>
+      </Navbar>
+
+      <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="m-auto flex-grow-1 justify-content-evenly">
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#traffic">Traffic</Nav.Link>
 
@@ -30,7 +33,7 @@ function AppNavBar() {
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#map/3.7">Full Map</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#traffic">Help</Nav.Link>
+              <Nav.Link href="#help">Help</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
