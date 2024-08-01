@@ -9,11 +9,13 @@ npm install
 3. To start server:
 
 ```
+cd server
 node index.js
 ```
 
 4. For client, run
 
 ```
+cd client
 npm start
 ```
