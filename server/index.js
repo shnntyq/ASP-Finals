@@ -6,9 +6,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post("/", (req, res) => {
-  console.log(req.body);
-});
+const homeRoutes = require("./routes/homeRoute");
+app.use("/", homeRoutes);
 
 app.listen(3001, () => {
   console.log("server listening on port 3001");
