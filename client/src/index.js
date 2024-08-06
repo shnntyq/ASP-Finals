@@ -5,12 +5,14 @@ import AppNavBar from "./components/navbar";
 import SearchBar from "./components/searchbar";
 import Footer from "./components/footer";
 import reportWebVitals from "./reportWebVitals";
+import MapComponent from "./components/map";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AppNavBar />
     <SearchBar />
+    <MapComponent />
     <Footer />
   </React.StrictMode>
 );
