@@ -1,16 +1,15 @@
 import Container from "react-bootstrap/Container";
+import Map from "react-map-gl/maplibre";
 
 function MapComponent() {
   return (
     <Container>
-      <iframe
-        src="https://www.onemap.gov.sg/minimap/minimap.html?mapStyle=Default&zoomLevel=15"
-        height="480"
-        width="50%"
-        scrolling="no"
-        frameborder="0"
-        allowfullscreen="allowfullscreen"
-      ></iframe>
+      <Map
+        maxBounds={[103.596, 1.1443, 104.1, 1.4835]}
+        mapStyle="https://www.onemap.gov.sg/maps/json/raster/mbstyle/Grey.json"
+        style={{ width: 600, height: 400 }}
+        attributionControl={false}
+      />
     </Container>
   );
 }
