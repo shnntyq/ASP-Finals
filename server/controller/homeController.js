@@ -23,17 +23,14 @@ function getLocationDetails(location) {
 
 exports.home = async (req, res, next) => {
   try {
-    let current_loc = req.body.loc.curr_location;
-    let destination_loc = req.body.loc.dest_location;
+    let curr_location = req.body.loc.curr_location;
+    let dest_location = req.body.loc.dest_location;
 
-    const current_loc_details = getLocationDetails(current_loc);
-    const destination_loc_details = getLocationDetails(destination_loc);
+    const curr_location_details = getLocationDetails(curr_location);
+    const dest_location_details = getLocationDetails(dest_location);
 
-    console.log(current_loc_details);
-    console.log(destination_loc_details);
-
-    console.log(current_loc);
-    console.log(destination_loc);
+    console.log(curr_location_details);
+    console.log(dest_location_details);
   } catch (err) {
     next(err);
   }
