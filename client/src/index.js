@@ -2,20 +2,40 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import AppNavBar from "./components/navbar";
-import SearchBar from "./components/searchbar";
-import Footer from "./components/footer";
-import reportWebVitals from "./reportWebVitals";
+import HelpComponent from "./components/HelpComponent";
+import HomeComponent from "./components/HomeComponent";
+import TrafficComponent from "./components/TrafficComponent";
+import MapComponent from "./components/MapComponent"; // Import MapComponent
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+function App() {
+  return (
+    <Router>
+      <AppNavBar />
+      <Routes>
+        <Route path="/" element={<HomeComponent />} /> {/* Home route */}
+        <Route path="/traffic" element={<TrafficComponent />} />{" "}
+        {/* Traffic route */}
+        <Route path="/help" element={<HelpComponent />} /> {/* Help route */}
+        {/* Map routes */}
+        <Route path="/map/east-west" element={<MapComponent mapId="3.1" />} />
+        <Route path="/map/north-south" element={<MapComponent mapId="3.2" />} />
+        <Route path="/map/north-east" element={<MapComponent mapId="3.3" />} />
+        <Route path="/map/circle" element={<MapComponent mapId="3.4" />} />
+        <Route path="/map/downtown" element={<MapComponent mapId="3.5" />} />
+        <Route
+          path="/map/thomson-east-coast"
+          element={<MapComponent mapId="3.6" />}
+        />
+        <Route path="/map/full" element={<MapComponent mapId="3.7" />} />
+      </Routes>
+    </Router>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppNavBar />
-    <SearchBar />
-    <Footer />
+    <App />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
