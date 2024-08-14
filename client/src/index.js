@@ -3,8 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import AppNavBar from "./components/navbar";
 import HelpComponent from "./components/HelpComponent";
+import SearchBar from "./components/searchbar";
 import HomeComponent from "./components/HomeComponent";
 import TrafficComponent from "./components/TrafficComponent";
+import Footer from "./components/footer";
 import MapComponent from "./components/MapComponent"; // Import MapComponent
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -37,5 +39,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
+    <SearchBar />
+    <Footer />
   </React.StrictMode>
 );
