@@ -1,24 +1,22 @@
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+require("dotenv").config();
+const axios = require("axios");
 
-function getLocationDetails(location) {
-  const data = JSON.stringify(false);
-  const xhr = new XMLHttpRequest();
-
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-      console.log(this.responseText);
-    }
-  });
-
-  xhr.open(
-    "GET",
-    `https://www.onemap.gov.sg/api/common/elastic/search?searchVal=${location}&returnGeom=Y&getAddrDetails=Y`,
-    true
+async function getLocationDetails(location) {
+  const response = await axios.get(
+    `https://www.onemap.gov.sg/api/common/elastic/search?searchVal=${location}&returnGeom=Y&getAddrDetails=Y`
   );
 
-  xhr.send(data);
+  return response.data.results[0];
+}
 
-  return data;
+async function getRoute(startLat, startLong, endLat, endLong) {
+  const response = await axios.get(
+    `https://www.onemap.gov.sg/api/public/routingsvc/route?start=${startLat}%2C${startLong}&end=${endLat}%2C${endLong}&routeType=walk&date=08-19-2024&time=07%3A35%3A00&mode=TRANSIT&maxWalkDistance=1000&numItineraries=3`,
+    { headers: { Authorization: process.env.ONEMAP_API_KEY } }
+  );
+
+  return response;
 }
 
 exports.home = async (req, res, next) => {
@@ -26,11 +24,17 @@ exports.home = async (req, res, next) => {
     let curr_location = req.body.loc.curr_location;
     let dest_location = req.body.loc.dest_location;
 
-    const curr_location_details = getLocationDetails(curr_location);
-    const dest_location_details = getLocationDetails(dest_location);
+    const curr_location_details = await getLocationDetails(curr_location);
+    const dest_location_details = await getLocationDetails(dest_location);
 
-    console.log(curr_location_details);
-    console.log(dest_location_details);
+    const route = await getRoute(
+      curr_location_details.LATITUDE,
+      curr_location_details.LONGITUDE,
+      dest_location_details.LATITUDE,
+      dest_location_details.LONGITUDE
+    );
+
+    console.log(route);
   } catch (err) {
     next(err);
   }
