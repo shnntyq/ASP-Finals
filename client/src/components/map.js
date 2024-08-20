@@ -1,17 +1,37 @@
 import Container from "react-bootstrap/Container";
-import Map from "react-map-gl/maplibre";
+import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import { isEmpty } from "lodash";
 
-function MapComponent() {
+function MapComponent({ result }) {
+  const defaultUrl = "https://www.onemap.gov.sg/amm/amm.html?mapStyle=Default";
+
+  const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    if (isEmpty(result)) {
+      setUrl(defaultUrl);
+    } else {
+      setUrl(
+        `${defaultUrl}&zoomLevel=15&marker=postalcode:${result.startPostal}!colour:red!rType:BUS!rDest:${result.endLat},${result.endLong}&marker=postalcode:${result.endPostal}!colour:darkblue&popupWidth=200`
+      );
+    }
+  }, [result]);
   return (
     <Container>
-      <Map
-        maxBounds={[103.596, 1.1443, 104.1, 1.4835]}
-        mapStyle="https://www.onemap.gov.sg/maps/json/raster/mbstyle/Grey.json"
-        style={{ width: 600, height: 400 }}
-        attributionControl={false}
-      />
+      <iframe
+        title="map"
+        src={url}
+        height="450"
+        width="50%"
+        allowfullscreen="allowfullscreen"
+      ></iframe>
     </Container>
   );
 }
+
+MapComponent.propTypes = {
+  result: PropTypes.object.isRequired,
+};
 
 export default MapComponent;

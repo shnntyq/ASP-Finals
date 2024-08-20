@@ -2,17 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import AppNavBar from "./components/navbar";
-import SearchBar from "./components/searchbar";
+import MapRoute from "./components/mapRoute";
 import Footer from "./components/footer";
 import reportWebVitals from "./reportWebVitals";
-import MapComponent from "./components/map";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AppNavBar />
-    <SearchBar />
-    <MapComponent />
+    <MapRoute />
     <Footer />
   </React.StrictMode>
 );

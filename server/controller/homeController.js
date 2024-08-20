@@ -27,14 +27,19 @@ exports.home = async (req, res, next) => {
     const curr_location_details = await getLocationDetails(curr_location);
     const dest_location_details = await getLocationDetails(dest_location);
 
-    const route = await getRoute(
-      curr_location_details.LATITUDE,
-      curr_location_details.LONGITUDE,
+    console.log(
+      curr_location_details.POSTAL,
+      dest_location_details.POSTAL,
       dest_location_details.LATITUDE,
       dest_location_details.LONGITUDE
     );
 
-    console.log(route);
+    res.json({
+      startPostal: curr_location_details.POSTAL,
+      endPostal: dest_location_details.POSTAL,
+      endLat: dest_location_details.LATITUDE,
+      endLong: dest_location_details.LONGITUDE,
+    });
   } catch (err) {
     next(err);
   }
