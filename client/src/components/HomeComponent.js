@@ -1,11 +1,14 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
 
 function HomeComponent() {
   return (
-    <div>
-      <h1>Welcome to NavigateSG</h1>
-      <p>This is the home page.</p>
-    </div>
+    <Container>
+      <div>
+        <h1>Welcome to NavigateSG</h1>
+        <p>This is the home page.</p>
+      </div>
+    </Container>
   );
 }
 
