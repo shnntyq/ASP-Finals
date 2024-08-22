@@ -19,7 +19,7 @@ const MapComponent = ({ mapId }) => {
     3.5: downtown, // Local file for Downtown
     3.6: thomsonEastCoast, // Local file for Thomson-East Coast
     3.7: fullMap, // Local file for Full Map
-=======
+
    
 
 
