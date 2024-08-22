@@ -24,9 +24,11 @@ const MapComponent = ({ mapId }) => {
     <div>
       <img
         src={imageUrls[mapId]}
+
         width="1300px"
         height="780px"
         style={{ marginLeft: "106px", marginTop: "20px" }}
+
         alt={`Map ${mapId}`}
       />
     </div>
