@@ -23,12 +23,11 @@ function AppNavBar() {
             <Nav className="m-auto flex-grow-1 justify-content-evenly">
               <Nav.Link as={Link} to="/">
                 Home
-              </Nav.Link>{" "}
-              {/* Link to HomeComponent */}
+              </Nav.Link>
               <Nav.Link as={Link} to="/traffic">
                 Traffic
-              </Nav.Link>{" "}
-              {/* Link to TrafficComponent */}
+              </Nav.Link>
+
               <NavDropdown title="MRT Map" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/map/east-west">
                   East-West
@@ -55,8 +54,7 @@ function AppNavBar() {
               </NavDropdown>
               <Nav.Link as={Link} to="/help">
                 Help
-              </Nav.Link>{" "}
-              {/* Link to HelpComponent */}
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
