@@ -33,9 +33,9 @@ function SearchBar({ data, submit, handle }) {
           </Col>
           <Col>
             <Form.Select id="mode" onChange={(e) => handle(e)}>
-              <option value={data.mode}>TRANSIT</option>
-              <option value={data.mode}>BUS</option>
-              <option value={data.mode}>RAIL</option>
+              <option value="TRANSIT">TRANSIT</option>
+              <option value="BUS">BUS</option>
+              <option value="RAIL">RAIL</option>
             </Form.Select>
           </Col>
           <Col xs="auto">
