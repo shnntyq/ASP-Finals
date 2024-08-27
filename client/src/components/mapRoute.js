@@ -4,7 +4,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 function MapRoute() {
-  const url = "http://localhost:3001/";
+  const url = "http://localhost:3001/location";
   const [data, setData] = useState({
     curr_location: "",
     dest_location: "",
