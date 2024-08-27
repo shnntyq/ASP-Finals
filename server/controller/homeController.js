@@ -18,13 +18,20 @@ async function getLocationDetails(location) {
   return response.data.results[0];
 }
 
-async function getRoute(startLat, startLong, endLat, endLong, time) {
+async function getRoute(
+  startLat,
+  startLong,
+  endLat,
+  endLong,
+  transportMode,
+  time
+) {
   const response = await axios.get(
-    `https://www.onemap.gov.sg/api/public/routingsvc/route?start=${startLat}%2C${startLong}&end=${endLat}%2C${endLong}&routeType=pt&date=08-26-2024&time=${time}&mode=TRANSIT&maxWalkDistance=1000&numItineraries=3`,
+    `https://www.onemap.gov.sg/api/public/routingsvc/route?start=${startLat}%2C${startLong}&end=${endLat}%2C${endLong}&routeType=pt&date=08-26-2024&time=${time}&mode=${transportMode}&maxWalkDistance=1000&numItineraries=3`,
     { headers: { Authorization: process.env.ONEMAP_API_KEY } }
   );
 
-  console.log(response.data.plan.itineraries);
+  console.log(response);
 
   return response;
 }
@@ -33,6 +40,7 @@ exports.home = async (req, res, next) => {
   try {
     let curr_location = req.body.loc.curr_location;
     let dest_location = req.body.loc.dest_location;
+    let transport_mode = req.body.loc.mode;
 
     const curr_location_details = await getLocationDetails(curr_location);
     const dest_location_details = await getLocationDetails(dest_location);
@@ -42,6 +50,7 @@ exports.home = async (req, res, next) => {
       curr_location_details.LONGITUDE,
       dest_location_details.LATITUDE,
       dest_location_details.LONGITUDE,
+      transport_mode,
       getTime()
     );
 

@@ -8,6 +8,7 @@ function MapRoute() {
   const [data, setData] = useState({
     curr_location: "",
     dest_location: "",
+    mode: "",
   });
 
   const [result, setResult] = useState({});
@@ -20,9 +21,9 @@ function MapRoute() {
 
   function handle(e) {
     const newData = { ...data };
+
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log(newData);
   }
 
   return (
