@@ -31,21 +31,19 @@ async function getRoute(
     { headers: { Authorization: process.env.ONEMAP_API_KEY } }
   );
 
-  console.log(response);
-
-  return response;
+  return response.data.plan.itineraries;
 }
 
 exports.home = async (req, res, next) => {
   try {
     let curr_location = req.body.loc.curr_location;
     let dest_location = req.body.loc.dest_location;
-    let transport_mode = req.body.loc.mode;
+    let transport_mode = req.body.loc.mode || "TRANSIT";
 
     const curr_location_details = await getLocationDetails(curr_location);
     const dest_location_details = await getLocationDetails(dest_location);
 
-    getRoute(
+    const routeOptions = await getRoute(
       curr_location_details.LATITUDE,
       curr_location_details.LONGITUDE,
       dest_location_details.LATITUDE,
@@ -54,11 +52,15 @@ exports.home = async (req, res, next) => {
       getTime()
     );
 
+    console.log(routeOptions[0].legs);
+
     res.json({
       startPostal: curr_location_details.POSTAL,
       endPostal: dest_location_details.POSTAL,
       endLat: dest_location_details.LATITUDE,
       endLong: dest_location_details.LONGITUDE,
+      transportMode: transport_mode,
+      route: routeOptions,
     });
   } catch (err) {
     next(err);
