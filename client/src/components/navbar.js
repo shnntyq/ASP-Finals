@@ -8,26 +8,21 @@ import "bootstrap/dist/css/bootstrap.css";
 
 function AppNavBar() {
   return (
-      <div style={{width: "100%"}}>
-        <Navbar bg="dark" variant="dark" expand= "lg">
-          <Container>
-            <Navbar.Brand as={Link} to="/">
-              NavigateSG
-            </Navbar.Brand>
-          </Container>
-
-          <Container>
+      <div style={{height: "100px"}}>
+        <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+        <div>
+          <Container classname= "">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className=" flex-grow-1 justify-content-evenly">
-                <Nav.Link as={Link} to="/">
+              <Nav className= "mx-2">
+                <Nav.Link as={Link} to="/" className= "mx-4">
                   Home
                 </Nav.Link>
-                <Nav.Link as={Link} to="/traffic">
+                <Nav.Link as={Link} to="/traffic" className= "mx-4">
                   Traffic
                 </Nav.Link>
 
-                <NavDropdown title="MRT Map" id="basic-nav-dropdown">
+                <NavDropdown title="MRT Map" id="basic-nav-dropdown" className= "mx-4">
                   <NavDropdown.Item as={Link} to="/map/east-west">
                     East-West
                   </NavDropdown.Item>
@@ -51,12 +46,21 @@ function AppNavBar() {
                     Full Map
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link as={Link} to="/help">
+                <Nav.Link as={Link} to="/help" className= "mx-4">
                   Help
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
+        </div>
+        
+          <div style={{display: "flex", justifyContent: "flex-start", marginLeft: "auto",}}>
+            <Container>
+              <Navbar.Brand as={Link} to="/">
+                NavigateSG
+              </Navbar.Brand>
+            </Container>
+          </div>
 
         </Navbar>
       </div>
