@@ -1,10 +1,12 @@
-const getBusArrival  = require("../services/dataService");
+const dataService = require("../services/dataService");
+const express = require("express");
+const router = express.Router();
 
 // returns bus arrival info of input bus stop code
 router.get('/getbusarrival/', function (req, res) {
     var BusStopCode = req.query.BusStopCode;
     console.log(BusStopCode);
-    getBusArrival(BusStopCode, function (err, arrival) {
+    dataService.getBusArrival(BusStopCode, function (err, arrival) {
         if (err) {
             res.status(401).send("unable to get arrival timing with the provided bus stop code");
         } else {
@@ -12,3 +14,4 @@ router.get('/getbusarrival/', function (req, res) {
         }
     });
   });
+  module.exports = router;

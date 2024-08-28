@@ -1,71 +1,117 @@
-var request = require('request');
+//var request = require('request');
+const axios = require('axios');
+require('dotenv').config();
 
-function getBusArrival (busstopcode, callback) {
-  var options = {
-      'method': 'GET',
-      'url': `http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=${busstopcode}`,
-      'headers': {
-          'AccountKey': 'b+8pVHKwRkyLKABbXVxmpQ=='
-      }
-  };
-  request(options, function (error, response) {
-      if (error) { throw new Error(error) }
-      else {
-          //console.log(response.body);
-          return callback(null, JSON.parse(response.body))
-      }
-  });
+const accKey = process.env.DATAMALL_API_KEY;
+
+function getBusArrival(busstopcode, callback) {
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `https://datamall2.mytransport.sg/ltaodataservice/v3/BusArrival?BusStopCode=${busstopcode}`,
+        headers: { 
+          'AccountKey': accKey
+        }
+      };
+      
+      axios.request(config)
+      .then((response) => {
+        //console.log(response.data);
+        callback(null, response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+        return callback(error);
+      });
 };
 
 function getAllBusServices (callback) {
-    var options = {
-        'method': 'GET',
-        'url': `http://datamall2.mytransport.sg/ltaodataservice/BusServices`,
-        'headers': {
-            'AccountKey': 'b+8pVHKwRkyLKABbXVxmpQ=='
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'https://datamall2.mytransport.sg/ltaodataservice/BusServices',
+        headers: { 
+          'AccountKey': 'ZJkjQ5uiTe6Q0WLfDly0cg=='
         }
-    };
-    request(options, function (error, response) {
-        if (error) { throw new Error(error) }
-        else {
-            //console.log(response.body);
-            return callback(null, JSON.parse(response.body))
-        }
-    });
+      };
+      
+      axios.request(config)
+      .then((response) => {
+        //console.log(response.data);
+        return callback(null, response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+        return callback(error);
+      });
+      
   };
 
   function getBusRoutes (callback) {
-    var options = {
-        'method': 'GET',
-        'url': `http://datamall2.mytransport.sg/ltaodataservice/BusRoutes`,
-        'headers': {
-            'AccountKey': 'b+8pVHKwRkyLKABbXVxmpQ=='
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'https://datamall2.mytransport.sg/ltaodataservice/BusRoutes',
+        headers: { 
+          'AccountKey': 'ZJkjQ5uiTe6Q0WLfDly0cg=='
         }
-    };
-    request(options, function (error, response) {
-        if (error) { throw new Error(error) }
-        else {
-            //console.log(response.body);
-            return callback(null, JSON.parse(response.body))
-        }
+      };
+    
+    axios.request(config)
+    .then((response) => {
+      //console.log(response.data);
+      return callback(null, response.data)
+    })
+    .catch((error) => {
+      console.log(error);
+      return callback(error);
     });
+      
   };
 
   function getBusStops (callback) {
-    var options = {
-        'method': 'GET',
-        'url': `http://datamall2.mytransport.sg/ltaodataservice/BusStops`,
-        'headers': {
-            'AccountKey': 'b+8pVHKwRkyLKABbXVxmpQ=='
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'https://datamall2.mytransport.sg/ltaodataservice/BusStops',
+        headers: { 
+          'AccountKey': accKey
         }
-    };
-    request(options, function (error, response) {
-        if (error) { throw new Error(error) }
-        else {
-            //console.log(response.body);
-            return callback(null, JSON.parse(response.body))
-        }
-    });
+      };
+      
+      axios.request(config)
+      .then((response) => {
+        //console.log(response.data);
+        return callback(null, response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+        return callback(error);
+      });
+      
   };
 
-module.exports = getBusArrival;
+  function getTrafficIncidents(callback) {
+      let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'http://datamall2.mytransport.sg/ltaodataservice/TrafficIncidents',
+        headers: { 
+          'AccountKey': accKey, 
+          'accept': 'application/json', 
+          'Content-Type': 'application/json'
+        },
+      };
+      
+      axios.request(config)
+      .then((response) => {
+        //console.log(response.data);
+        return callback(null, response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+        return callback(error);
+      });
+};
+
+  module.exports = { getBusArrival, getAllBusServices, getBusRoutes, getBusStops, getTrafficIncidents };
