@@ -12,11 +12,17 @@ const MapComponent = ({ mapId }) => {
   };
 
   return (
-    <div>
+    <div style={{
+      display: "flex",
+      justifyContent: "center", // centers horizontally
+      marginTop: "20px", // optional, for top margin
+    }}>
       <img
         src={imageUrls[mapId]}
-        width="100%"
-        height="600px"
+
+        width = "90%" // 90% of the window width
+        height = "auto" // maintains the aspect ratio
+
         alt={`Map ${mapId}`}
       />
     </div>
