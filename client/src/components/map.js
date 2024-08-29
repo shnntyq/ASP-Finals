@@ -64,9 +64,28 @@ function MapComponent({ result }) {
                         </Col>
                         <Collapse in={open}>
                           <div id="route_details">
+                            <Row key="">
+                              <Col>
+                                <p>From</p>
+                              </Col>
+                              <Col>
+                                <p>To</p>
+                              </Col>
+                              <Col>Via</Col>
+                              <Col>Bus No./ MRT</Col>
+                            </Row>
                             {item.legs?.length > 0 &&
                               item.legs.map((details) => (
-                                <p>{details.startTime}</p>
+                                <Row key="">
+                                  <Col>
+                                    <p>{details.from.name}</p>
+                                  </Col>
+                                  <Col>
+                                    <p>{details.to.name}</p>
+                                  </Col>
+                                  <Col>{details.mode}</Col>
+                                  <Col>{details.route}</Col>
+                                </Row>
                               ))}
                           </div>
                         </Collapse>

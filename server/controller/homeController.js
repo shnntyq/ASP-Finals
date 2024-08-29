@@ -52,7 +52,7 @@ exports.home = async (req, res, next) => {
       getTime()
     );
 
-    console.log(routeOptions[0].legs);
+    console.log(routeOptions);
 
     res.json({
       startPostal: curr_location_details.POSTAL,
