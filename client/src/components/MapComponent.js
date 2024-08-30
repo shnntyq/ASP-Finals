@@ -11,7 +11,6 @@ import fullMap from "../assets/full-map.png";
 
 const MapComponent = ({ mapId }) => {
   const imageUrls = {
-
     3.1: eastWest, // Local file for East-West
     3.2: northSouth, // Local file for North-South
     3.3: northEast, // Local file for North-East
@@ -19,21 +18,15 @@ const MapComponent = ({ mapId }) => {
     3.5: downtown, // Local file for Downtown
     3.6: thomsonEastCoast, // Local file for Thomson-East Coast
     3.7: fullMap, // Local file for Full Map
-=======
-   
-
-
   };
 
   return (
     <div>
       <img
         src={imageUrls[mapId]}
-
         width="1300px"
         height="780px"
         style={{ marginLeft: "106px", marginTop: "20px" }}
-
         alt={`Map ${mapId}`}
       />
     </div>
