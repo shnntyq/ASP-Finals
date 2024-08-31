@@ -8,6 +8,7 @@ import HomeComponent from "./components/HomeComponent";
 import TrafficComponent from "./components/TrafficComponent";
 import Footer from "./components/footer";
 import MapComponent from "./components/MapComponent"; // Import MapComponent
+import FAQComponent from "./components/FAQComponent";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
           element={<MapComponent mapId="3.6" />}
         />
         <Route path="/map/full" element={<MapComponent mapId="3.7" />} />
+        <Route path="/help" element={<HelpComponent />} />
+        <Route path="/faq" element={<FAQComponent />} />
       </Routes>
     </Router>
   );
