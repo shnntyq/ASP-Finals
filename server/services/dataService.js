@@ -30,7 +30,7 @@ async function getAllBusServices(callback) {
     maxBodyLength: Infinity,
     url: "https://datamall2.mytransport.sg/ltaodataservice/BusServices",
     headers: {
-      AccountKey: "ZJkjQ5uiTe6Q0WLfDly0cg==",
+      AccountKey: accKey,
     },
   };
 
@@ -51,7 +51,7 @@ async function getBusRoutes(callback) {
     maxBodyLength: Infinity,
     url: "https://datamall2.mytransport.sg/ltaodataservice/BusRoutes",
     headers: {
-      AccountKey: "ZJkjQ5uiTe6Q0WLfDly0cg==",
+      AccountKey: accKey,
     },
   };
 
