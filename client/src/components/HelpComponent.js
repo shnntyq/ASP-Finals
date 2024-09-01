@@ -18,18 +18,21 @@ function HelpComponent() {
         }}
       >
         <Card style={{ width: "90%" }}>
-          {" "}
-          {/* Card takes 90% of its container (50vw) */}
           <Card.Body>
             <Card.Title>Help & Support</Card.Title>
-            <Card.Text>
+            <Card.Text className="d-flex align-items-center justify-content-between">
               Welcome to the Help section! Here you can find answers to common
               questions and guides on how to use the website.
-              <Link to="/faq">FAQ page </Link>
+              <Col className="d-flex justify-content-end">
+                <Button as={Link} to="/faq" variant="primary" classname="ms-3"
+                style={{ display: "flex", justifyContent: "flex-end", marginTop: "10px", width: "8rem"}}
+                >
+                  See Questions
+                </Button>
+              </Col>
             </Card.Text>
           </Card.Body>
         </Card>
-      </div>
 
       {/* MID PORTION */}
       <div
