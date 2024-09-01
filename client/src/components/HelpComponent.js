@@ -45,6 +45,11 @@ function HelpComponent() {
         please contact our support team via the contact form.
         </p>
       </div>
+      <div>
+        <h2>How does NavigateSG work?</h2>
+          <p>Headed to town? Just input the address that you need to go to, and NavigateSG will show you the way!</p>
+          <p>Input your destination in our Search bar and check latest traffic conditions in our traffic tab.</p>
+      </div>
     </Container>
 
   );
