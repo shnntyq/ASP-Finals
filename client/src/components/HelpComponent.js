@@ -1,8 +1,9 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-
+import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button"
 
 function HelpComponent() {
   return (
@@ -25,7 +26,7 @@ function HelpComponent() {
               questions and guides on how to use the website.
               <Col className="d-flex justify-content-end">
                 <Button as={Link} to="/faq" variant="primary" classname="ms-3"
-                style={{ display: "flex", justifyContent: "flex-end", marginTop: "10px", width: "8rem"}}
+                style={{ display: "flex", justifyContent: "flex-end", marginTop: "10px", }}
                 >
                   See Questions
                 </Button>
@@ -33,6 +34,7 @@ function HelpComponent() {
             </Card.Text>
           </Card.Body>
         </Card>
+      </div>
 
       {/* MID PORTION */}
       <div
@@ -57,8 +59,15 @@ function HelpComponent() {
             {/* Card takes 90% of its container (50vw) */}
             <Card.Body>
               <Card.Title>Traffic Information:</Card.Title>
-              <Card.Text>
+              <Card.Text className="d-flex align-items-center justify-content-between">
                 See real-time traffic updates with just one click.
+                <Col className="d-flex justify-content-end">
+                  <Button as={Link} to="/traffic" variant="primary" classname="ms-3"
+                  style={{ display: "flex", justifyContent: "flex-end", marginTop: "10px",}}
+                  >
+                    Traffic Conditions
+                  </Button>
+                </Col>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -77,9 +86,16 @@ function HelpComponent() {
             {/* Card takes 90% of its container (50vw) */}
             <Card.Body>
               <Card.Title>How to Use the MRT Map:</Card.Title>
-              <Card.Text>
-                View the map of the MRT lines or view specific lines to find ur
+              <Card.Text className="d-flex align-items-center justify-content-between">
+                View the map of the MRT lines or view specific lines to find your
                 destination.
+                <Col className="d-flex justify-content-end">
+                  <Button as={Link} to="/map/full" variant="primary" classname="ms-3"
+                  style={{ display: "flex", justifyContent: "flex-end", marginTop: "10px",}}
+                  >
+                    Full Map
+                  </Button>
+                </Col>
               </Card.Text>
             </Card.Body>
           </Card>
