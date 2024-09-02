@@ -1,57 +1,107 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button"
 
 function HelpComponent() {
   return (
-    <Container>
-      <div style={{ padding: "20px" }}>
-        <h2>FAQ</h2>
-        <p>
-          We answer some of the most commonly asked questions here!
-        </p>
-        <ul>
-          <li>
-            <strong>How does NavigateSG calculate travel times?</strong> 
-            <br></br>NavigateSG uses real-time traffic data and train schedules provided by an API from Singapore’s local transport authority. This data allows us to give you the most accurate and up-to-date travel time estimates.
-          </li>
-          <li>
-            <strong>Is the information on NavigateSG always up to date?</strong> 
-            <br></br>Yes, we continuously update our information using live data from the local transport website. This ensures that you receive the latest traffic conditions and train schedules when planning your journey.
-          </li>
-          <li>
-            <strong>Can I use NavigateSG to plan my journey across multiple modes of transport?</strong> 
-            <br></br>Absolutely! NavigateSG provides route options that may include a combination of buses, trains, and walking routes, helping you choose the best way to reach your destination.
-          </li>
-          <li>
-            <strong>Does NavigateSG cover all areas in Singapore?</strong> 
-            <br></br>Yes, NavigateSG covers all areas within Singapore, offering comprehensive navigation assistance whether you're traveling in the city center or to more remote neighborhoods.
-          </li>
-          <li>
-            <strong>How accurate are the estimated travel times on NavigateSG?</strong> 
-            <br></br>While we strive for high accuracy by using real-time data, actual travel times may vary due to unforeseen circumstances like sudden traffic jams or train service disruptions. We recommend allowing some extra time for your journey.
-          </li>
-          <li>
-            <strong>Do I need to sign up to use NavigateSG?</strong> 
-            <br></br>No, you can use NavigateSG without signing up. However, creating an account allows you to save your favorite routes, set up notifications for delays, and receive personalized travel suggestions.
-          </li>
-          <li>
-            <strong>How do I use the MRT Map?</strong> 
-            <br></br>Select a map from the
-            dropdown menu to view different MRT lines.
-          </li>
-        </ul>
-        <p>
-        If you need further assistance,
-        please contact our support team via the contact form.
-        </p>
+    <Container style={{ maxWidth: "100%", padding: "0" }}>
+      {/* TOP PORTION */}
+      <div
+        style={{
+          display: "flex", // Enables flexbox layout
+          justifyContent: "center", // Space between cards
+          width: "100vw", // Full viewport width
+          padding: "0 20px", // Optional: Adds some space on the sides
+          marginBottom: "2.5vw",
+        }}
+      >
+        <Card style={{ width: "90%" }}>
+          <Card.Body>
+            <Card.Title>Help & Support</Card.Title>
+            <Card.Text className="d-flex align-items-center justify-content-between">
+              Welcome to the Help section! Here you can find answers to common
+              questions and guides on how to use the website.
+              <Col className="d-flex justify-content-end">
+                <Button as={Link} to="/faq" variant="primary" classname="ms-3"
+                style={{ display: "flex", justifyContent: "flex-end", marginTop: "10px", }}
+                >
+                  See Questions
+                </Button>
+              </Col>
+            </Card.Text>
+          </Card.Body>
+        </Card>
       </div>
-      <div>
-        <h2>How does NavigateSG work?</h2>
-          <p>Headed to town? Just input the address that you need to go to, and NavigateSG will show you the way!</p>
-          <p>Input your destination in our Search bar and check latest traffic conditions in our traffic tab.</p>
+
+      {/* MID PORTION */}
+      <div
+        style={{
+          display: "flex", // Enables flexbox layout
+          justifyContent: "space-between", // Space between cards
+          width: "100vw", // Full viewport width
+          padding: "0 20px", // Optional: Adds some space on the sides
+        }}
+      >
+        {/* Left-Aligned Card */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end", // Pushes the card to the right within this div
+            width: "50vw", // 50% of the viewport width
+            marginRight: "2.5vw",
+          }}
+        >
+          <Card style={{ width: "90%" }}>
+            {" "}
+            {/* Card takes 90% of its container (50vw) */}
+            <Card.Body>
+              <Card.Title>Traffic Information:</Card.Title>
+              <Card.Text className="d-flex align-items-center justify-content-between">
+                See real-time traffic updates with just one click.
+                <Col className="d-flex justify-content-end">
+                  <Button as={Link} to="/traffic" variant="primary" classname="ms-3"
+                  style={{ display: "flex", justifyContent: "flex-end", marginTop: "10px",}}
+                  >
+                    Traffic Conditions
+                  </Button>
+                </Col>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+
+        {/* Right-Aligned Card */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-start", // Pushes the card to the left within this div
+            width: "50vw", // 50% of the viewport width
+          }}
+        >
+          <Card style={{ width: "90%" }}>
+            {" "}
+            {/* Card takes 90% of its container (50vw) */}
+            <Card.Body>
+              <Card.Title>How to Use the MRT Map:</Card.Title>
+              <Card.Text className="d-flex align-items-center justify-content-between">
+                View the map of the MRT lines or view specific lines to find your
+                destination.
+                <Col className="d-flex justify-content-end">
+                  <Button as={Link} to="/map/full" variant="primary" classname="ms-3"
+                  style={{ display: "flex", justifyContent: "flex-end", marginTop: "10px",}}
+                  >
+                    Full Map
+                  </Button>
+                </Col>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>  
       </div>
     </Container>
-
   );
 }
 

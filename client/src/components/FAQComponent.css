@@ -1,0 +1,22 @@
+  
+  .faq-header {
+    margin-bottom: 20px; /* Space between header and grid */
+    text-align: center;
+  }
+  
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust minmax values as needed */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center-aligns the grid within the container */
+  }
+  
+  .faq-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px; /* Adjust padding as needed */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for better visibility */
+  }
