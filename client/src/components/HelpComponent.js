@@ -99,7 +99,7 @@ function HelpComponent() {
               </Card.Text>
             </Card.Body>
           </Card>
-        </div>
+        </div>  
       </div>
     </Container>
   );
