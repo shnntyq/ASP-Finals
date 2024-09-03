@@ -26,74 +26,77 @@ function MapComponent({ result }) {
       );
     }
   }, [result]);
+
   return (
-    <Container>
-      <Row>
-        <Col>
+    <Container fluid> {/* Changed to fluid to use full width */}
+      <Row className="g-4"> {/* Added g-4 for consistent spacing */}
+        <Col lg={6}> {/* Adjusted columns for better distribution */}
           <iframe
             title="map"
             src={url}
             height="450"
             width="100%"
-            allowfullscreen="allowfullscreen"
+            allowFullScreen="allowfullscreen"
           ></iframe>
         </Col>
-        <Col>
+        <Col lg={6}> {/* Adjusted columns for better distribution */}
           {result.route?.length > 0 &&
             result.route.map((item) => (
-              <>
+              <React.Fragment key={count}> {/* Added unique key */}
                 <p>Route {count++}</p>
-                <Row>
-                  <Card>
-                    <CardActionArea
-                      onClick={() => setOpen(!open)}
-                      aria-controls="route_details"
-                      aria-expanded={open}
-                    >
-                      <CardContent>
-                        <Col>
-                          <p key="">Fare: {item.fare}</p>
-                        </Col>
-                        <Col>
-                          <p key="">
-                            Duration: {parseInt(item.duration / 60)} mins
-                          </p>
-                        </Col>
-                        <Col>
-                          <p key="">Transfers: {item.transfers}</p>
-                        </Col>
-                        <Collapse in={open}>
-                          <div id="route_details">
-                            <Row key="">
-                              <Col>
-                                <p>From</p>
-                              </Col>
-                              <Col>
-                                <p>To</p>
-                              </Col>
-                              <Col>Via</Col>
-                              <Col>Bus No./ MRT</Col>
-                            </Row>
-                            {item.legs?.length > 0 &&
-                              item.legs.map((details) => (
-                                <Row key="">
-                                  <Col>
-                                    <p>{details.from.name}</p>
-                                  </Col>
-                                  <Col>
-                                    <p>{details.to.name}</p>
-                                  </Col>
-                                  <Col>{details.mode}</Col>
-                                  <Col>{details.route}</Col>
-                                </Row>
-                              ))}
-                          </div>
-                        </Collapse>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
+                <Row className="g-2"> {/* Added g-2 for spacing between cards */}
+                  <Col> {/* Added Col for uniform card layout */}
+                    <Card>
+                      <CardActionArea
+                        onClick={() => setOpen(!open)}
+                        aria-controls="route_details"
+                        aria-expanded={open}
+                      >
+                        <CardContent>
+                          <Row>
+                            <Col>
+                              <p>Fare: {item.fare}</p>
+                            </Col>
+                            <Col>
+                              <p>Duration: {parseInt(item.duration / 60)} mins</p>
+                            </Col>
+                            <Col>
+                              <p>Transfers: {item.transfers}</p>
+                            </Col>
+                          </Row>
+                          <Collapse in={open}>
+                            <div id="route_details">
+                              <Row key="">
+                                <Col>
+                                  <p>From</p>
+                                </Col>
+                                <Col>
+                                  <p>To</p>
+                                </Col>
+                                <Col>Via</Col>
+                                <Col>Bus No./ MRT</Col>
+                              </Row>
+                              {item.legs?.length > 0 &&
+                                item.legs.map((details, index) => (
+                                  <Row key={index}> {/* Added unique key for each leg */}
+                                    <Col>
+                                      <p>{details.from.name}</p>
+                                    </Col>
+                                    <Col>
+                                      <p>{details.to.name}</p>
+                                    </Col>
+                                    <Col>{details.mode}</Col>
+                                    <Col>{details.route}</Col>
+                                  </Row>
+                                ))}
+                            </div>
+                          </Collapse>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </Col>
                 </Row>
-              </>
+              </React.Fragment>
             ))}
         </Col>
       </Row>
