@@ -4,7 +4,6 @@ import "./index.css";
 import AppNavBar from "./components/navbar";
 import MapRoute from "./components/mapRoute";
 import HelpComponent from "./components/HelpComponent";
-import SearchBar from "./components/searchbar";
 import HomeComponent from "./components/HomeComponent";
 import TrafficComponent from "./components/TrafficComponent";
 import Footer from "./components/footer";
@@ -42,13 +41,8 @@ function App() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-<<<<<<< HEAD
-    <AppNavBar />
-    <MapRoute />
-=======
     <App />
-    <SearchBar />
->>>>>>> main
+    <MapRoute />
     <Footer />
   </React.StrictMode>
 );
