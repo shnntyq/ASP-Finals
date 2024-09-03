@@ -3,10 +3,29 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+import axios from "axios";
 
-function SearchBar({ data, submit, handle }) {
+function SearchBar() {
+  const url = "http://localhost:3001/";
+  const [data, setData] = useState({
+    curr_location: "",
+    dest_location: "",
+  });
+
+  function submit(e) {
+    e.preventDefault();
+    console.log(data);
+    axios.post(url, { loc: data });
+  }
+
+  function handle(e) {
+    const newData = { ...data };
+    newData[e.target.id] = e.target.value;
+    setData(newData);
+    console.log(newData);
+  }
+
   return (
     <Container className="mt-4">
       <Form onSubmit={(e) => submit(e)}>
@@ -31,12 +50,6 @@ function SearchBar({ data, submit, handle }) {
               onChange={(e) => handle(e)}
             />
           </Col>
-          <Col>
-            <Form.Select id="mode" onChange={(e) => handle(e)}>
-              <option value="TRANSIT">TRANSIT</option>
-              <option value="BUS">BUS</option>
-            </Form.Select>
-          </Col>
           <Col xs="auto">
             <Button type="submit">Search</Button>
           </Col>
@@ -46,11 +59,5 @@ function SearchBar({ data, submit, handle }) {
     </Container>
   );
 }
-
-SearchBar.propTypes = {
-  data: PropTypes.object.isRequired,
-  submit: PropTypes.func.isRequired,
-  handle: PropTypes.func.isRequired,
-};
 
 export default SearchBar;
