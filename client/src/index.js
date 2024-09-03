@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import AppNavBar from "./components/navbar";
+import MapRoute from "./components/mapRoute";
 import HelpComponent from "./components/HelpComponent";
-import SearchBar from "./components/searchbar";
 import HomeComponent from "./components/HomeComponent";
 import TrafficComponent from "./components/TrafficComponent";
 import Footer from "./components/footer";
@@ -42,7 +42,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
-    <SearchBar />
+    <MapRoute />
     <Footer />
   </React.StrictMode>
 );
