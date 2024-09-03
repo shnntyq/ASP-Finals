@@ -17,6 +17,13 @@ function MapComponent({ result }) {
 
   let count = 1;
 
+  function convertUnixTime(unixTime) {
+    const dt = new Date(unixTime);
+    const currTime = dt.getHours() + ":" + dt.getMinutes();
+
+    return currTime;
+  }
+
   useEffect(() => {
     if (isEmpty(result)) {
       setUrl(defaultUrl);
@@ -73,6 +80,7 @@ function MapComponent({ result }) {
                               </Col>
                               <Col>Via</Col>
                               <Col>Bus No./ MRT</Col>
+                              <Col>Time</Col>
                             </Row>
                             {item.legs?.length > 0 &&
                               item.legs.map((details) => (
@@ -85,6 +93,12 @@ function MapComponent({ result }) {
                                   </Col>
                                   <Col>{details.mode}</Col>
                                   <Col>{details.route}</Col>
+                                  <Col>
+                                    {details.route.length > 0 &&
+                                      convertUnixTime(
+                                        parseInt(details.from.arrival)
+                                      )}
+                                  </Col>
                                 </Row>
                               ))}
                           </div>
