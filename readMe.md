@@ -1,4 +1,5 @@
 1. To setup project after cloning, install all package starting with server folder and run:
+
    First open terminal and run these in
 ```
 cd server
@@ -7,6 +8,7 @@ node index.js
 ```
 
 2. Then, open a new terminal and run these code in:
+
    ** run npm audit fix if any vulnerablilities are found **
 ```
 cd client
