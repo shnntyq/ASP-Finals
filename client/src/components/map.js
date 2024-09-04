@@ -13,7 +13,7 @@ function MapComponent({ result }) {
   const defaultUrl = "https://www.onemap.gov.sg/amm/amm.html?mapStyle=Default";
 
   const [url, setUrl] = useState("");
-  const [open, setOpen] = useState(false);
+  const [openStates, setOpenStates] = useState([]); // Array to manage open state for each card
 
   let count = 1;
 
@@ -25,12 +25,25 @@ function MapComponent({ result }) {
         `${defaultUrl}&zoomLevel=15&marker=postalcode:${result.startPostal}!colour:red!rType:${result.transportMode}!rDest:${result.endLat},${result.endLong}&marker=postalcode:${result.endPostal}!colour:darkblue&popupWidth=200`
       );
     }
+
+    // Initialize open state array when results are loaded
+    if (result.route?.length) {
+      setOpenStates(Array(result.route.length).fill(false));
+    }
   }, [result]);
 
+  const handleToggle = (index) => {
+    setOpenStates((prevOpenStates) => {
+      const newOpenStates = [...prevOpenStates];
+      newOpenStates[index] = !newOpenStates[index]; // Toggle the state for the specific index
+      return newOpenStates;
+    });
+  };
+
   return (
-    <Container fluid> {/* Changed to fluid to use full width */}
-      <Row className="g-4"> {/* Added g-4 for consistent spacing */}
-        <Col lg={6}> {/* Adjusted columns for better distribution */}
+    <Container fluid>
+      <Row className="g-4">
+        <Col lg={6}>
           <iframe
             title="map"
             src={url}
@@ -39,18 +52,18 @@ function MapComponent({ result }) {
             allowFullScreen="allowfullscreen"
           ></iframe>
         </Col>
-        <Col lg={6}> {/* Adjusted columns for better distribution */}
+        <Col lg={6}>
           {result.route?.length > 0 &&
-            result.route.map((item) => (
-              <React.Fragment key={count}> {/* Added unique key */}
+            result.route.map((item, index) => (
+              <React.Fragment key={index}> {/* Use index as a unique key */}
                 <p>Route {count++}</p>
-                <Row className="g-2"> {/* Added g-2 for spacing between cards */}
-                  <Col> {/* Added Col for uniform card layout */}
+                <Row className="g-2">
+                  <Col>
                     <Card>
                       <CardActionArea
-                        onClick={() => setOpen(!open)}
-                        aria-controls="route_details"
-                        aria-expanded={open}
+                        onClick={() => handleToggle(index)} // Toggle specific card
+                        aria-controls={`route_details_${index}`}
+                        aria-expanded={openStates[index]}
                       >
                         <CardContent>
                           <Row>
@@ -64,9 +77,9 @@ function MapComponent({ result }) {
                               <p>Transfers: {item.transfers}</p>
                             </Col>
                           </Row>
-                          <Collapse in={open}>
-                            <div id="route_details">
-                              <Row key="">
+                          <Collapse in={openStates[index]}>
+                            <div id={`route_details_${index}`}>
+                              <Row>
                                 <Col>
                                   <p>From</p>
                                 </Col>
@@ -77,8 +90,8 @@ function MapComponent({ result }) {
                                 <Col>Bus No./ MRT</Col>
                               </Row>
                               {item.legs?.length > 0 &&
-                                item.legs.map((details, index) => (
-                                  <Row key={index}> {/* Added unique key for each leg */}
+                                item.legs.map((details, legIndex) => (
+                                  <Row key={legIndex}>
                                     <Col>
                                       <p>{details.from.name}</p>
                                     </Col>
