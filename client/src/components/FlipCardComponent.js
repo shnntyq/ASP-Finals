@@ -5,7 +5,6 @@ import CardActionArea from "@mui/material/CardActionArea";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Collapse from "react-bootstrap/Collapse";
-import PropTypes from "prop-types";
 
 function FlipComponent({ item, index }) {
   const [open, setOpen] = useState(false);

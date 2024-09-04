@@ -55,7 +55,9 @@ function MapComponent({ result }) {
         <Col lg={6}>
           {result.route?.length > 0 &&
             result.route.map((item, index) => (
-              <React.Fragment key={index}> {/* Use index as a unique key */}
+              <React.Fragment key={index}>
+                {" "}
+                {/* Use index as a unique key */}
                 <p>Route {count++}</p>
                 <Row className="g-2">
                   <Col>
@@ -71,7 +73,9 @@ function MapComponent({ result }) {
                               <p>Fare: {item.fare}</p>
                             </Col>
                             <Col>
-                              <p>Duration: {parseInt(item.duration / 60)} mins</p>
+                              <p>
+                                Duration: {parseInt(item.duration / 60)} mins
+                              </p>
                             </Col>
                             <Col>
                               <p>Transfers: {item.transfers}</p>

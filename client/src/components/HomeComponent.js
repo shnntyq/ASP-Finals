@@ -5,17 +5,15 @@ import MapRoute from "./mapRoute";
 
 function HomeComponent() {
   return (
-    <Container style={{ paddingBottom: "3rem"}}>
+    <Container style={{ paddingBottom: "3rem" }}>
       <div>
         <h1>Welcome to NavigateSG</h1>
-        <p>This is the home page.</p>
+        <p>Key in the location to get started.</p>
       </div>
 
       <MapRoute />
-
     </Container>
   );
-
 }
 
 export default HomeComponent;
