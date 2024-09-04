@@ -26,6 +26,7 @@ const MapComponent = ({ mapId }) => {
         display: "flex",
         justifyContent: "center", // centers horizontally
         marginTop: "20px", // optional, for top margin
+        marginBottom: "3rem",
       }}
     >
       <img

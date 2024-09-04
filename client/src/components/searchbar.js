@@ -8,37 +8,39 @@ import PropTypes from "prop-types";
 
 function SearchBar({ data, submit, handle }) {
   return (
-    <Container className="mt-4">
+    <Container fluid className="mt-4"> {/* Use fluid container to utilize full width */}
       <Form onSubmit={(e) => submit(e)}>
-        <Row>
-          <Col>
+        <Row className="g-3"> {/* Use g-3 for consistent spacing */}
+          <Col xs={12} md={4}> {/* Takes full width on small screens, 1/3 on medium and up */}
             <Form.Control
               type="text"
               placeholder="Current Location"
-              className=" mr-sm-2"
+              className="mr-sm-2"
               id="curr_location"
               value={data.curr_location}
               onChange={(e) => handle(e)}
             />
           </Col>
-          <Col>
+          <Col xs={12} md={4}> {/* Takes full width on small screens, 1/3 on medium and up */}
             <Form.Control
               type="text"
               placeholder="Destination"
-              className=" mr-sm-2"
+              className="mr-sm-2"
               id="dest_location"
               value={data.dest_location}
               onChange={(e) => handle(e)}
             />
           </Col>
-          <Col>
+          <Col xs={12} md={2}> {/* Takes full width on small screens, smaller width on medium */}
             <Form.Select id="mode" onChange={(e) => handle(e)}>
               <option value="TRANSIT">TRANSIT</option>
               <option value="BUS">BUS</option>
             </Form.Select>
           </Col>
-          <Col xs="auto">
-            <Button type="submit">Search</Button>
+          <Col xs={12} md={2}> {/* Button takes full width on smaller screens */}
+            <Button type="submit" className="w-100"> {/* Ensure button is full width */}
+              Search
+            </Button>
           </Col>
         </Row>
       </Form>

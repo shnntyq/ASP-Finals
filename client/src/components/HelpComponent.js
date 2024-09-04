@@ -8,10 +8,11 @@ import { useMediaQuery } from "react-responsive";
 
 function HelpComponent() {
   const isLaptop = useMediaQuery({ query: "(min-width: 1224px)" });
-  const isPhone = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
-    <Container style={{ maxWidth: "100%", padding: "0" }}>
+    <Container
+      style={{ maxWidth: "100%", padding: "0", paddingBottom: "3rem" }}
+    >
       {/* TOP PORTION */}
       <div
         style={{
