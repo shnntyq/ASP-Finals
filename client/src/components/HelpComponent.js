@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button"
 
 function HelpComponent() {
   return (
-    <Container style={{ maxWidth: "100%", padding: "0" }}>
+    <Container style={{ maxWidth: "100%", padding: "0", paddingBottom: "3rem"}}>
       {/* TOP PORTION */}
       <div
         style={{
