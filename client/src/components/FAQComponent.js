@@ -54,7 +54,7 @@ const FAQComponent = () => {
         <h2>FAQ</h2>
         <p>We answer some of the most commonly asked questions here!</p>
       </div>
-      <Row>
+      <Row style={{ paddingBottom: "3rem"}}>
         {faqs.map((faq, index) => (
           <Col key={index} sm={12} md={6} lg={4} className="mb-4">
             <Card className="faq-card">
